@@ -1,0 +1,48 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+spring:
+  profiles:
+    active: ${SPRING_PROFILE:prod}
+  application:
+    name: lpt-backend
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:lpt_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:sravani18}
+    driver-class-name: org.postgresql.Driver
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:your_email@gmail.com}
+    password: ${MAIL_PASSWORD:your_app_password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    open-in-view: false
+  sql:
+    init:
+      mode: never
+
+lpt:
+  jwt:
+    secret: ${JWT_SECRET:lpt-ps25-jwt-secret-key-min-32-chars-long!!}
+    expiration-ms: 86400000
+
+logging:
+  level:
+    com.lpt: INFO
+    org.springframework.security: WARN

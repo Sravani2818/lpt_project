@@ -1,0 +1,8 @@
+target/
+.mvn-temp/
+*.class
+*.jar
+!/.mvn/wrapper/maven-wrapper.jar
+.idea/
+*.iml
+.env
